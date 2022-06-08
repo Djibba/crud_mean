@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const logger = require('morgan');
 const fs = require('fs');
+const user = require('./routes/routes');
 
 const app = express();
 
@@ -31,10 +32,6 @@ app.use(session({
     cookie: { secure: false }
 }));
 
-app.get('/' , (req , res)=>{
-
-   res.send('hello from simple server :)')
-
-})
+app.use('/' , user);
 
 module.exports = app;
